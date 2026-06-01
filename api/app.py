@@ -63,3 +63,11 @@ def predict(stock: str):
             2
         )
     }
+@app.get("/")
+def home():
+    return {
+        "project": "AI Powered Stock Market Prediction System",
+        "author": "Priyanshi Kumrawat",
+        "status": "running",
+        "documentation": "/docs"
+    }
