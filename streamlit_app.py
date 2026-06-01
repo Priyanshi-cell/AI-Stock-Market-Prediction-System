@@ -43,25 +43,24 @@ recommendation = generate_recommendation(
 col1, col2, col3 = st.columns(3)
 
 with col1:
-
     st.metric(
         "Current Price",
         f"${current_price:.2f}"
     )
 
 with col2:
-
     st.metric(
         "Predicted Price",
         f"${predicted_price:.2f}"
     )
 
 with col3:
-
     st.metric(
         "Recommendation",
         recommendation
     )
+
+st.divider()
 
 price_change = (
     (predicted_price - current_price)
@@ -86,8 +85,6 @@ else:
         f"🤖 AI Insight: Predicted movement is only {abs(price_change):.2f}% suggesting a neutral outlook."
     )
 
-st.divider()
-
 st.subheader(
     "📅 7-Day Forecast"
 )
@@ -96,7 +93,7 @@ forecast_df = forecast_next_7_days(df)
 
 st.dataframe(
     forecast_df,
-    use_container_width=True
+    width="stretch"
 )
 
 forecast_chart = px.line(
@@ -108,7 +105,7 @@ forecast_chart = px.line(
 
 st.plotly_chart(
     forecast_chart,
-    use_container_width=True
+    width="stretch"
 )
 
 st.divider()
@@ -123,7 +120,7 @@ results = pd.read_csv(
 
 st.dataframe(
     results,
-    use_container_width=True
+    width="stretch"
 )
 
 st.subheader(
@@ -139,7 +136,7 @@ fig_r2 = px.bar(
 
 st.plotly_chart(
     fig_r2,
-    use_container_width=True
+    width="stretch"
 )
 
 fig_rmse = px.bar(
@@ -151,7 +148,7 @@ fig_rmse = px.bar(
 
 st.plotly_chart(
     fig_rmse,
-    use_container_width=True
+    width="stretch"
 )
 
 best_model = (
